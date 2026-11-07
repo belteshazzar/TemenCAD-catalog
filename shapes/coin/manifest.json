@@ -1,0 +1,14 @@
+{
+  "name": "coin",
+  "version": "1.0.0",
+  "title": "coin",
+  "description": "first shared package!",
+  "author": "temen",
+  "license": "CC0-1.0",
+  "tags": [],
+  "module": "coin.js",
+  "exports": [
+    "coin"
+  ],
+  "apiVersion": 1
+}
