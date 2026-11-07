@@ -1,0 +1,12 @@
+{
+  "name": "wall-hook",
+  "version": "1.0.0",
+  "title": "Wall hook",
+  "description": "A sturdy wall hook with two countersunk screw holes, a gusset and a lip at the tip. Parametric in width, reach, thickness and screw size. Prints on its back.",
+  "author": "TemenCAD",
+  "license": "CC0-1.0",
+  "tags": ["hook", "wall", "mount", "screw"],
+  "module": "hook.js",
+  "exports": ["wallHook"],
+  "apiVersion": 1
+}

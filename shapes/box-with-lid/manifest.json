@@ -1,0 +1,12 @@
+{
+  "name": "box-with-lid",
+  "version": "1.0.0",
+  "title": "Box with fitted lid",
+  "description": "A rounded storage box and a lid with an inner lip that locates in the body. Parametric in size, wall thickness, lip height and clearance.",
+  "author": "TemenCAD",
+  "license": "CC0-1.0",
+  "tags": ["box", "lid", "storage", "container"],
+  "module": "box.js",
+  "exports": ["boxWithLid"],
+  "apiVersion": 1
+}

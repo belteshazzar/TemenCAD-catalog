@@ -1,0 +1,12 @@
+{
+  "name": "hex-bit-holder",
+  "version": "1.0.0",
+  "title": "Hex bit holder",
+  "description": "A tray of hexagonal pockets for 1/4-inch screwdriver bits, with rounded edges and an optional label area. Parametric in grid size, pitch and pocket depth.",
+  "author": "TemenCAD",
+  "license": "CC0-1.0",
+  "tags": ["tool", "organiser", "bits", "tray"],
+  "module": "holder.js",
+  "exports": ["bitHolder"],
+  "apiVersion": 1
+}

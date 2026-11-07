@@ -1,0 +1,12 @@
+{
+  "name": "knob",
+  "version": "1.0.0",
+  "title": "Scalloped knob with D shaft",
+  "description": "A control knob with finger scallops and a D-shaped bore for potentiometer or encoder shafts. Parametric in diameter, height, scallop count and shaft size.",
+  "author": "TemenCAD",
+  "license": "CC0-1.0",
+  "tags": ["knob", "electronics", "potentiometer"],
+  "module": "knob.js",
+  "exports": ["knob"],
+  "apiVersion": 1
+}

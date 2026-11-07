@@ -1,0 +1,12 @@
+{
+  "name": "parametric-hinge",
+  "version": "1.0.0",
+  "title": "Parametric hinge",
+  "description": "Print-in-place hinge: two leaves with alternating knuckles around a captive pin. Set the length, knuckle count, pin size and clearance for your printer.",
+  "author": "TemenCAD",
+  "license": "CC0-1.0",
+  "tags": ["hinge", "mechanism", "print-in-place"],
+  "module": "hinge.js",
+  "exports": ["hinge"],
+  "apiVersion": 1
+}

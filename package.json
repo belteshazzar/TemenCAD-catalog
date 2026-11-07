@@ -1,0 +1,13 @@
+{
+  "name": "temencad-catalog",
+  "private": true,
+  "type": "module",
+  "description": "Shared shapes for TemenCAD: validated, rendered and published as a static catalogue.",
+  "scripts": {
+    "check": "node scripts/build.mjs --check",
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "temencad": "github:belteshazzar/TemenCAD"
+  }
+}

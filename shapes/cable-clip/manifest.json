@@ -1,0 +1,12 @@
+{
+  "name": "cable-clip",
+  "version": "1.0.0",
+  "title": "Screw-down cable clip",
+  "description": "A C-shaped clip that snaps around a cable of a given diameter, with a countersunk screw tab. Parametric in cable diameter, wall, width and screw size.",
+  "author": "TemenCAD",
+  "license": "CC0-1.0",
+  "tags": ["cable", "clip", "organiser", "screw"],
+  "module": "clip.js",
+  "exports": ["cableClip"],
+  "apiVersion": 1
+}
