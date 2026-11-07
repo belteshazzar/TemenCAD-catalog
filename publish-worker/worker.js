@@ -130,14 +130,21 @@ async function openPullRequest(env, manifest, files) {
     });
   }
   const forkOwner = env.FORK_REPO.split('/')[0];
-  const pr = await gh(`/repos/${env.CATALOG_REPO}/pulls`, {
-    method: 'POST',
-    body: JSON.stringify({
-      title: `Share: ${manifest.title} (${manifest.name}@${manifest.version})`,
-      head: `${forkOwner}:${branch}`, base: 'main',
-      body: `${manifest.description}\n\nAuthor: ${manifest.author}\nLicense: ${manifest.license}\nTags: ${manifest.tags.join(', ')}\n\nSubmitted from the TemenCAD app.`,
-      maintainer_can_modify: true,
-    }),
-  });
-  return pr.html_url;
+  try {
+    const pr = await gh(`/repos/${env.CATALOG_REPO}/pulls`, {
+      method: 'POST',
+      body: JSON.stringify({
+        title: `Share: ${manifest.title} (${manifest.name}@${manifest.version})`,
+        head: `${forkOwner}:${branch}`, base: 'main',
+        body: `${manifest.description}\n\nAuthor: ${manifest.author}\nLicense: ${manifest.license}\nTags: ${manifest.tags.join(', ')}\n\nSubmitted from the TemenCAD app.`,
+        maintainer_can_modify: true,
+      }),
+    });
+    return pr.html_url;
+  } catch (err) {
+    // Don't leave an orphan branch on the fork when the pull request could not be opened.
+    await fetch(`https://api.github.com/repos/${env.FORK_REPO}/git/refs/heads/${branch}`, { method: 'DELETE', headers: { authorization: `Bearer ${env.GITHUB_TOKEN}`, 'user-agent': 'temencad-publish' } }).catch(() => {});
+    if (/403/.test(err.message)) throw new Error(`${err.message}. The bot token must be a classic token with the public_repo scope: fine-grained tokens cannot open pull requests on repositories the bot does not own.`);
+    throw err;
+  }
 }

@@ -19,7 +19,7 @@ Rate limiting: 5 submissions per IP per hour via the Cache API (good enough for 
 cd publish-worker
 npm install -g wrangler          # once
 wrangler login
-wrangler secret put GITHUB_TOKEN     # bot account token with contents + pull-requests write on FORK_REPO
+wrangler secret put GITHUB_TOKEN     # bot account *classic* token with the public_repo scope
 wrangler secret put TURNSTILE_SECRET # optional; leave unset to skip the captcha
 wrangler deploy
 ```
@@ -27,3 +27,5 @@ wrangler deploy
 Then set `PUBLISH_URL` in the app's `src/config.js` to the worker URL (and `TURNSTILE_SITE_KEY` if used) and redeploy the app.
 
 The bot account needs a fork of the catalogue (`FORK_REPO`). Pull requests from the fork keep the bot token away from the main repository: it can only ever push to its own fork.
+
+The token must be a **classic** personal access token (Settings → Developer settings → Personal access tokens → Tokens (classic)) with only the `public_repo` scope. Fine-grained tokens can be scoped only to repositories the bot owns, so they can push to the fork but GitHub refuses the final "create pull request" call on the catalogue with a 403.
