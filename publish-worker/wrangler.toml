@@ -7,6 +7,6 @@ compatibility_date = "2025-01-01"
 #   TURNSTILE_SECRET  Cloudflare Turnstile secret, pairs with TURNSTILE_SITE_KEY in the app (optional)
 [vars]
 CATALOG_REPO = "belteshazzar/TemenCAD-catalog"   # where pull requests are opened
-FORK_REPO = "temencad-bot/TemenCAD-catalog"      # the bot's fork that branches are pushed to
+FORK_REPO = "temen-bot/TemenCAD-catalog"      # the bot's fork that branches are pushed to
 ALLOWED_ORIGIN = "https://belteshazzar.github.io"
 MAX_BYTES = "2097152"
