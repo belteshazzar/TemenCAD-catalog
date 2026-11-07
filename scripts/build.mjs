@@ -9,13 +9,13 @@ import { readdirSync, statSync, readFileSync, writeFileSync, mkdirSync, rmSync, 
 import { execSync } from 'node:child_process';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { renderThumbnail } from './render.mjs';
 
 const base = process.env.TEMENCAD_DIR ? pathToFileURL(resolve(process.env.TEMENCAD_DIR) + '/').href : 'temencad/';
 const { buildProject, projectFromFolder } = await import(base + 'src/headless.js');
 const { validateManifest, buildPackage, findExports, MANIFEST, THUMB, API_VERSION } = await import(base + 'src/package.js');
 const { isScript, ENTRY } = await import(base + 'src/project.js');
 const { colorHex } = await import(base + 'src/export.js');
+const { renderThumbnail } = await import(base + 'src/render.js');
 const { whereText } = await import(base + 'src/trace.js');
 
 const APP_URL = 'https://belteshazzar.github.io/TemenCAD/';
