@@ -34,7 +34,8 @@ export default {
       const files = await unzip(await pkg.arrayBuffer());
       if (!files.has('main.js')) return json({ error: 'package has no main.js' }, 400, cors);
       files.set('manifest.json', new TextEncoder().encode(JSON.stringify(manifest, null, 2) + '\n'));
-      files.delete('thumb.png'); // CI renders it
+      // The app's render goes on the branch as preview.png so the pull request can show it; CI renders the catalogue thumbnail itself.
+      if (files.has('thumb.png')) { files.set('preview.png', files.get('thumb.png')); files.delete('thumb.png'); }
 
       const url = await openPullRequest(env, manifest, files);
       return json({ pullRequest: url }, 200, cors);
@@ -131,12 +132,13 @@ async function openPullRequest(env, manifest, files) {
   }
   const forkOwner = env.FORK_REPO.split('/')[0];
   try {
+    const preview = files.has('preview.png') ? `![${manifest.title}](https://raw.githubusercontent.com/${env.FORK_REPO}/${branch}/shapes/${manifest.name}/preview.png)\n\n` : '';
     const pr = await gh(`/repos/${env.CATALOG_REPO}/pulls`, {
       method: 'POST',
       body: JSON.stringify({
         title: `Share: ${manifest.title} (${manifest.name}@${manifest.version})`,
         head: `${forkOwner}:${branch}`, base: 'main',
-        body: `${manifest.description}\n\nAuthor: ${manifest.author}\nLicense: ${manifest.license}\nTags: ${manifest.tags.join(', ')}\n\nSubmitted from the TemenCAD app.`,
+        body: `${preview}${manifest.description}\n\n| | |\n|---|---|\n| Author | ${manifest.author} |\n| License | ${manifest.license} |\n| Tags | ${manifest.tags.join(', ') || '—'} |\n| Module | \`${manifest.module}\` exporting \`${manifest.exports.join('`, `')}\` |\n\nSubmitted from the TemenCAD app. The preview is the author's render; the *Validate packages* check rebuilds the package and the catalogue renders its own thumbnail on merge.`,
         maintainer_can_modify: true,
       }),
     });

@@ -24,6 +24,7 @@ shapes/<name>/
   main.js         a demo of the shape (what the thumbnail shows); may use a top-level return
   <module>.js     exports the reusable functions, e.g. export function hinge(length, opts) { ... }
   ...             other scripts, fonts (.ttf/.otf) or meshes (.stl) the module needs
+  preview.png     optional render shown in the pull request (ignored by the build; the site renders its own thumbnail)
 ```
 
 `manifest.json`:

@@ -7,9 +7,9 @@ A Cloudflare Worker (free tier) that turns a package submitted by the app's **Sh
 1. The app POSTs `multipart/form-data` with `manifest` (JSON), `package` (the `.temen` zip) and optionally `turnstile` (a Turnstile token).
 2. The worker checks the origin, size limits, the manifest and the Turnstile token, then with a bot token:
    - creates a branch `share/<name>-<short id>` on the bot's fork from the catalogue's `main`,
-   - commits `shapes/<name>/…` (every file in the package plus `manifest.json`),
+   - commits `shapes/<name>/…` (every file in the package plus `manifest.json`, and the app's render as `preview.png`),
    - opens a pull request against the catalogue with the description from the manifest.
-3. It answers `{ "pullRequest": "https://github.com/.../pull/123" }`, which the app shows.
+3. It answers `{ "pullRequest": "https://github.com/.../pull/123" }`, which the app shows. The pull request description embeds the preview image from the branch.
 
 Rate limiting: 5 submissions per IP per hour via the Cache API (good enough for a hobby catalogue; move to KV for stricter control).
 
