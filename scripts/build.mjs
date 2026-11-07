@@ -118,6 +118,7 @@ function listingPage(index) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TemenCAD catalogue</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b6fcf'/%3E%3Cpath d='M8 11h16M16 11v12' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
 <style>
 body{margin:0;background:#f7f6f2;color:#2b2b2b;font:14px/1.45 system-ui,sans-serif}
 header{padding:20px 24px;border-bottom:1px solid #dedbd3}header h1{margin:0;font-size:20px}header p{margin:4px 0 0;color:#6b6b6b}
