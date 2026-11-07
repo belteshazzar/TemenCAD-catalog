@@ -8,6 +8,6 @@
     "build": "node scripts/build.mjs"
   },
   "dependencies": {
-    "temencad": "github:belteshazzar/TemenCAD#5a4c981295815dc99ff91aa66e080f04901d333a"
+    "temencad": "github:belteshazzar/TemenCAD#407bb8626e6441865c0d31ef3cc1ea31802aae87"
   }
 }
